@@ -1,0 +1,8 @@
+.NoCursor {
+  cursor: none;
+  transform: rotateX(45);
+}
+
+.Smooth {
+    transition: all 1s;
+}
