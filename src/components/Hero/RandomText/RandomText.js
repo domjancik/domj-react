@@ -40,9 +40,9 @@ function RandomText(props) {
   };
 
   const handleMove = (event) => {
-    console.log(self);
+    // console.log(self);
     const boundRect = self.current.getBoundingClientRect();
-    console.log(boundRect);
+    // console.log(boundRect);
 
     const x = event.clientX - boundRect.left - boundRect.width / 2;
     const y = event.clientY - boundRect.top - boundRect.height / 2;

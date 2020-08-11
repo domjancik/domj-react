@@ -10,11 +10,8 @@ const PILL_SOURCES = ["tags", "roles", "technologies", "collaborators"];
 function Project(props) {
   const [showDetails, setShowDetails] = useState(false);
 
-  console.log("PROPSs");
-  console.log(props);
-
-  const technologies = get(props, "technologies", []);
-  const collaborators = get(props, "collaborators", []);
+  // console.log("Props:");
+  // console.log(props);
 
   const pills = PILL_SOURCES.map((source) => {
     const sourceItems = get(props, source, []);
@@ -33,7 +30,8 @@ function Project(props) {
         alt="Description"
         title="Description"
       />
-      <h1 className="text-2xl text-center mt-4 mb-2">{props.title}</h1>
+      <div className="text-xs text-right text-white -mt-6 pr-3">{new Date(props.startDate).getFullYear()}</div>
+      <h1 className="text-2xl text-center mt-4 mb-2">{props.title} @ {props.organization}</h1>
       <ParagraphHeading>Description</ParagraphHeading>
       <Paragraph>{props.description}</Paragraph>
 
