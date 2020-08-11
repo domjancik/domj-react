@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import classes from "../../../util/util.module.css";
-import { transform } from "lodash";
+
+// IDEAS //
+// - React to scrolling - pause on no scroll or inverted
+// - Random pause
+// - Start moving on first scroll, don't stop
+// - First title Creative Developer and then it will just be random?
 
 function RandomText(props) {
   const [index, setIndex] = useState(0);
