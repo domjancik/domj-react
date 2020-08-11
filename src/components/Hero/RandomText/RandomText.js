@@ -9,7 +9,7 @@ import classes from "../../../util/util.module.css";
 
 function RandomText(props) {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(true);
   const [style, setStyle] = useState({});
 
   const self = useRef(null);
@@ -30,6 +30,13 @@ function RandomText(props) {
       backgroundColor: "inherit",
       color: "inherit",
     });
+  };
+
+  const handleScroll = (event) => {
+    console.log("Scrolling");
+    console.log(event);
+
+    setPaused(false);
   };
 
   const handleMove = (event) => {
@@ -89,6 +96,7 @@ function RandomText(props) {
       onMouseEnter={handleEnter}
       onMouseOut={handleLeave}
       onMouseMove={handleMove}
+      onScroll={handleScroll}
       style={style}
       className={`${classes.NoCursor} ${classes.Smooth}`}
     >
