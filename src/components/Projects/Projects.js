@@ -3,6 +3,13 @@ import Project from "./Project/Project";
 import * as contentful from "contentful";
 import FixMe from "../UI/FixMe/FixMe";
 import Emoji from "../UI/Emoji/Emoji";
+import Masonry from "react-masonry-css";
+
+const breakpointColumnsObj = {
+  default: 3,
+  768: 2,
+  640: 1,
+};
 
 class Projects extends PureComponent {
   constructor(props) {
@@ -52,22 +59,29 @@ class Projects extends PureComponent {
 
   render() {
     const projects = this.sortProjects(this.state.projects);
+    const projectElements = projects.map((project) => {
+      return <Project key={project.sys.id} {...project.fields} />;
+    });
 
     return (
       <Fragment>
         <div className="text-center sticky top-0">
           <button onClick={this.handleClicked} className="text-xl">
             <Emoji label="Sparkling new">✨</Emoji>
-            <Emoji label="Direction">{this.state.sortDirection ? "⏩" : "⏪"}</Emoji>
+            <Emoji label="Direction">
+              {this.state.sortDirection ? "⏩" : "⏪"}
+            </Emoji>
             <Emoji label="Ancient spider webs">🕸</Emoji>
           </button>
         </div>
         <hr />
-        <div>
-          {projects.map((project) => {
-            return <Project key={project.sys.id} {...project.fields} />;
-          })}
-        </div>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {projectElements}
+        </Masonry>
         <FixMe>md devices only one item visible per row</FixMe>
       </Fragment>
     );
