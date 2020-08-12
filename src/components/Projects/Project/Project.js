@@ -34,8 +34,8 @@ function Project(props) {
   let imgSrc =
     get(props, "heroImage.fields.file.url", "NOTFOUND") +
     "?fm=jpg&fl=progressive&w=600&h=600";
-  
-  const tags = <Pills pills={getPills("tags")}/>;
+
+  const tags = getPills("tags").join(", ");
 
   return (
     // <div className="md:w-1/2 lg:w-1/3 p-2 box-border inline-block">
@@ -47,15 +47,18 @@ function Project(props) {
         alt="Description"
         title="Description"
       />
-      {/* <div>{tags}</div> */}
-      <div className="text-xs text-right text-white -mt-6 pr-3">
-        {new Date(props.startDate).getFullYear()}
+      <div className="text-xs text-white -mt-6 z-50 relative p-3 rounded" style={{backgroundColor: 'black'}}>
+        <div className="float-left -mt-2">{tags}</div>
+
+        <div className="float-right -mt-2">
+          {new Date(props.startDate).getFullYear()}
+        </div>
       </div>
       <h1 className="text-2xl text-center mt-4 mb-2">{title}</h1>
       {/* <ParagraphHeading>Description</ParagraphHeading> */}
       <Paragraph>{props.description}</Paragraph>
 
-      {pills}
+      {showDetails ? pills : null}
     </div>
     // </div>
   );
