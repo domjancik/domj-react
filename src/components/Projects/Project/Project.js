@@ -82,7 +82,10 @@ function Project(props) {
           {new Date(props.startDate).getFullYear()}
         </div>
       </div>
-      <h1 className="text-2xl text-center mt-4 mb-2">{title}</h1>
+      <div className="mb-2 mt-4 text-center">
+        <h1 className="text-2xl">{title}</h1>
+        {props.client ? <h2 className="text-lg">for {props.client}</h2> : null}
+      </div>
       {/* <ParagraphHeading>Description</ParagraphHeading> */}
       <Paragraph>{props.description}</Paragraph>
 
