@@ -73,11 +73,11 @@ class Projects extends PureComponent {
       <Fragment>
         <div className="text-center sticky top-0">
           <button onClick={this.handleClicked} className="text-xl">
-            <Emoji label="Sparkling new">✨</Emoji>
+            <Emoji label="Newborn">👶</Emoji>
             <Emoji label="Direction">
               {this.state.sortDirection ? "⏩" : "⏪"}
             </Emoji>
-            <Emoji label="Ancient spider webs">🕸</Emoji>
+            <Emoji label="Eldest">👴</Emoji>
           </button>
         </div>
         <hr />
