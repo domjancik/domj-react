@@ -14,6 +14,10 @@ function Project(props) {
   // console.log("Props:");
   // console.log(props);
 
+  const handleDetailsToggled = () => {
+    setShowDetails(!showDetails);
+  };
+
   const getPills = (source) => {
     return get(props, source, []);
   };
@@ -47,7 +51,10 @@ function Project(props) {
         alt="Description"
         title="Description"
       />
-      <div className="text-xs text-white -mt-6 z-50 relative p-3 rounded" style={{backgroundColor: 'black'}}>
+      <div
+        className="text-xs text-white -mt-6 z-50 relative p-3 rounded"
+        style={{ backgroundColor: "black" }}
+      >
         <div className="float-left -mt-2">{tags}</div>
 
         <div className="float-right -mt-2">
@@ -58,6 +65,11 @@ function Project(props) {
       {/* <ParagraphHeading>Description</ParagraphHeading> */}
       <Paragraph>{props.description}</Paragraph>
 
+      <div className="text-center">
+        <button className="text-2xl hover:bg-teal-200 hover:text-white border-none" style={{width: '100%'}} onClick={handleDetailsToggled}>
+        {showDetails ? '-' : '+'}
+        </button>
+      </div>
       {showDetails ? pills : null}
     </div>
     // </div>
