@@ -11,12 +11,13 @@ function Hero() {
       </div>
       <div className="text-center text-2xl">
         <RandomText
-        interval={200}
+        interval={500}
           texts={["creative", "VL", "vvvv", "C#", "JavaScript", "product"]}
         />
       </div>
       <div className="text-center mb-16 text-xl">
         <RandomText
+        interval={250}
           texts={["developer", "artist", "designer", "maker", "inventor"]}
         />
       </div>

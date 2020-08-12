@@ -17,7 +17,7 @@ function Project(props) {
     const sourceItems = get(props, source, []);
 
     return sourceItems.length ? (
-      <PillParagraph pills={sourceItems}>{source}</PillParagraph>
+      <PillParagraph key={source} pills={sourceItems}>{source}</PillParagraph>
     ) : null;
   });
 
