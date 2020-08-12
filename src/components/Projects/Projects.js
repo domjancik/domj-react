@@ -46,15 +46,17 @@ class Projects extends PureComponent {
       (a, b) => new Date(a.fields.startDate) - new Date(b.fields.startDate)
     );
 
-    sortedProjects.sort(
-      (a, b) => a.fields.featured - b.fields.featured
-    );
-
     if (this.state.sortDirection) {
       sortedProjects.reverse();
     }
 
-    return sortedProjects;
+    const featuredProjects = sortedProjects.filter(project => project.fields.featured)
+    const nonFeaturedProjects = sortedProjects.filter(project => !project.fields.featured)
+    // sortedProjects.sort(
+    //   (a, b) => a.fields.featured - b.fields.featured
+    // );
+
+    return featuredProjects.concat(nonFeaturedProjects);
   };
 
   handleClicked = () => {
