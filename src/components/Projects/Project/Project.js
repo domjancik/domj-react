@@ -5,6 +5,7 @@ import ParagraphHeading from "../../UI/Headings/ParagraphHeading";
 import Paragraph from "../../UI/Paragraph/Paragraph";
 import PillParagraph from "../../UI/PillParagraph/PillParagraph";
 import Pills from "../../UI/Pill/Pills";
+import Emoji from "../../UI/Emoji/Emoji";
 
 const PILL_SOURCES = ["responsibilities", "technologies", "collaborators"];
 
@@ -40,6 +41,9 @@ function Project(props) {
     "?fm=jpg&fl=progressive&w=600&h=600";
 
   const tags = getPills("tags").join(", ");
+  const featured = props.featured ? (
+    <Emoji label="Favorite Star">⭐ </Emoji>
+  ) : null;
 
   return (
     // <div className="md:w-1/2 lg:w-1/3 p-2 box-border inline-block">
@@ -55,7 +59,10 @@ function Project(props) {
         className="text-xs text-white -mt-6 z-50 relative p-3 rounded"
         style={{ backgroundColor: "black" }}
       >
-        <div className="float-left -mt-2">{tags}</div>
+        <div className="float-left -mt-2">
+          {featured}
+          {tags}
+        </div>
 
         <div className="float-right -mt-2">
           {new Date(props.startDate).getFullYear()}
@@ -66,8 +73,12 @@ function Project(props) {
       <Paragraph>{props.description}</Paragraph>
 
       <div className="text-center">
-        <button className="text-2xl hover:bg-teal-200 hover:text-white border-none" style={{width: '100%'}} onClick={handleDetailsToggled}>
-        {showDetails ? '-' : '+'}
+        <button
+          className="text-2xl hover:bg-teal-200 hover:text-white border-none"
+          style={{ width: "100%" }}
+          onClick={handleDetailsToggled}
+        >
+          {showDetails ? "-" : "+"}
         </button>
       </div>
       {showDetails ? pills : null}
