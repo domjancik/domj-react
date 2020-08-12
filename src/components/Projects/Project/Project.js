@@ -66,7 +66,7 @@ function Project(props) {
 
   return (
     // <div className="md:w-1/2 lg:w-1/3 p-2 box-border inline-block">
-    <div className="p-4 border-dotted border-4 border-teal-200 rounded-md box-border">
+    <div className="p-2 md:p-4 border-dotted border-4 border-teal-200 rounded-md box-border">
       {/* <img src={image} alt="Description" title="Description" /> */}
       {img}
       <div
