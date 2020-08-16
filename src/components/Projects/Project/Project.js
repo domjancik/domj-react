@@ -1,19 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 
 import { get } from "lodash";
-import ParagraphHeading from "../../UI/Headings/ParagraphHeading";
 import Paragraph from "../../UI/Paragraph/Paragraph";
 import PillParagraph from "../../UI/PillParagraph/PillParagraph";
-import Pills from "../../UI/Pill/Pills";
 import Emoji from "../../UI/Emoji/Emoji";
+import Fade from "react-reveal/Fade";
 
 const PILL_SOURCES = ["responsibilities", "technologies", "collaborators"];
 
+function truncate(str, n) {
+  return str.length > n ? str.substr(0, n - 1) + "…" : str;
+}
+
 function Project(props) {
   const [showDetails, setShowDetails] = useState(false);
+  const [hoveringImage, setHoveringImage] = useState(false);
 
   // console.log("Props:");
   // console.log(props);
+
+  const handleImageEnter = () => {
+    console.log("image enter");
+    setHoveringImage(true);
+  };
+
+  const handleImageLeave = () => {
+    console.log("image leave");
+    setHoveringImage(false);
+  };
 
   const handleDetailsToggled = () => {
     setShowDetails(!showDetails);
@@ -45,16 +59,21 @@ function Project(props) {
     <Emoji label="Favorite Star">⭐ </Emoji>
   ) : null;
 
+  let imgDescription = get(props, "heroImage.fields.description", "An image");
+
   let img = (
     <img
       className="rounded w-full"
       src={imgSrc}
-      alt="Description"
-      title="Description"
+      alt={imgDescription}
+      title={imgDescription}
+      onMouseEnter={handleImageEnter}
+      onMouseLeave={handleImageLeave}
     />
   );
 
   const hasLink = !!props.links;
+  let link = "";
 
   if (hasLink) {
     img = (
@@ -62,45 +81,69 @@ function Project(props) {
         {img}
       </a>
     );
+
+    link = props.links[0].replace(/https?:\/\//gi, "");
+    link = link.replace(/\/$/gi, "");
+    link = truncate(link, 30);
   }
 
   return (
-    // <div className="md:w-1/2 lg:w-1/3 p-2 box-border inline-block">
-    <div className="p-2 md:p-4 border-dotted border-4 border-teal-200 rounded-md box-border">
-      {/* <img src={image} alt="Description" title="Description" /> */}
-      {img}
+    <div
+      className="p-2 md:p-4 border-dotted border-4 border-teal-200 rounded-md box-border"
+      {...props.flippedProps}
+    >
       <div
-        className="text-xs text-white -mt-6 z-50 relative p-3 rounded"
-        style={{ backgroundColor: "black" }}
+        className={
+          hasLink
+            ? "transition duration-200 transform hover:scale-105 hover:-translate-y-4 hover:shadow-xl"
+            : null
+        }
       >
-        <div className="float-left -mt-2">
-          {featured}
-          {tags}
-        </div>
+        {img}
+        <div
+          className="text-xs text-white -mt-6 z-10 relative p-3 rounded pointer-events-none"
+          style={{ backgroundColor: "black" }}
+        >
+          <div className="float-left -mt-2">
+            {featured}
+            {tags}
+          </div>
 
-        <div className="float-right -mt-2">
-          {new Date(props.startDate).getFullYear()}
+          <div className="float-right -mt-2">
+            {new Date(props.startDate).getFullYear()}
+          </div>
+
+          {hasLink ? (
+            <div
+              className={
+                "transition duration-200 text-center -mt-10 relative text-white p-1 " +
+                (hoveringImage ? "opacity-100" : "opacity-25")
+              }
+            >
+              open {link}
+            </div>
+          ) : null}
         </div>
       </div>
       <div className="mb-2 mt-4 text-center">
         <h1 className="text-2xl">{title}</h1>
         {props.client ? <h2 className="text-lg">for {props.client}</h2> : null}
       </div>
-      {/* <ParagraphHeading>Description</ParagraphHeading> */}
       <Paragraph>{props.description}</Paragraph>
 
       <div className="text-center">
         <button
-          className="text-2xl hover:bg-teal-200 hover:text-white border-none"
+          className="transition duration-200 text-2xl rounded hover:bg-teal-200 hover:text-white border-none focus:outline-none focus:shadow-outline"
           style={{ width: "100%" }}
           onClick={handleDetailsToggled}
         >
           {showDetails ? "-" : "+"}
         </button>
       </div>
-      {showDetails ? pills : null}
+      <Fade collapse when={showDetails}>
+        <Fragment>{pills}</Fragment>
+      </Fade>
     </div>
-    // </div>
   );
 }
 

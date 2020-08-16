@@ -1,13 +1,13 @@
 import React, { PureComponent, Fragment } from "react";
 import Project from "./Project/Project";
 import * as contentful from "contentful";
-import FixMe from "../UI/FixMe/FixMe";
 import Emoji from "../UI/Emoji/Emoji";
 import Masonry from "react-masonry-css";
+import { Flipper, Flipped } from "react-flip-toolkit";
 
 const breakpointColumnsObj = {
   default: 3,
-  768: 2,
+  1024: 2,
   640: 1,
 };
 
@@ -33,8 +33,6 @@ class Projects extends PureComponent {
   fetchProjects = () => this.client.getEntries({ content_type: "project" });
 
   setProjects = (response) => {
-    //this.sortProjects(response.items);
-    // console.log(sortedProjects);
     this.setState({
       projects: response.items,
     });
@@ -70,16 +68,27 @@ class Projects extends PureComponent {
   render() {
     const projects = this.sortProjects(this.state.projects);
     const projectElements = projects.map((project) => {
-      return <Project key={project.sys.id} {...project.fields} />;
+      return (
+        <Flipped key={project.sys.id} flipId={project.sys.id}>
+          {(flippedProps) => {
+            return <Project {...project.fields} flippedProps={flippedProps} />;
+          }}
+        </Flipped>
+      );
     });
+
+    const flipperKey = projects.map((project) => project.sys.id).join("");
 
     const directionBaseClasses =
       "transform transition duration-500 inline-block ";
 
     return (
       <Fragment>
-        <div className="text-center sticky top-0">
-          <button onClick={this.handleClicked} className="text-xl focus:outline-none focus:shadow-outline rounded">
+        <div className="text-center sticky top-0 z-50 bg-white bg-opacity-25">
+          <button
+            onClick={this.handleClicked}
+            className="text-xl focus:outline-none focus:shadow-outline rounded"
+          >
             <Emoji label="Newborn">👶</Emoji>
             <Emoji
               label="Direction"
@@ -94,14 +103,15 @@ class Projects extends PureComponent {
           </button>
         </div>
         <hr />
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
-        >
+        <Flipper flipKey={flipperKey}>
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
           {projectElements}
-        </Masonry>
-        <FixMe>md devices only one item visible per row</FixMe>
+          </Masonry>
+        </Flipper>
       </Fragment>
     );
   }
