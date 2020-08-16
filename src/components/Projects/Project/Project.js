@@ -20,12 +20,10 @@ function Project(props) {
   // console.log(props);
 
   const handleImageEnter = () => {
-    console.log("image enter");
     setHoveringImage(true);
   };
 
   const handleImageLeave = () => {
-    console.log("image leave");
     setHoveringImage(false);
   };
 
