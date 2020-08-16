@@ -50,8 +50,12 @@ class Projects extends PureComponent {
       sortedProjects.reverse();
     }
 
-    const featuredProjects = sortedProjects.filter(project => project.fields.featured)
-    const nonFeaturedProjects = sortedProjects.filter(project => !project.fields.featured)
+    const featuredProjects = sortedProjects.filter(
+      (project) => project.fields.featured
+    );
+    const nonFeaturedProjects = sortedProjects.filter(
+      (project) => !project.fields.featured
+    );
     // sortedProjects.sort(
     //   (a, b) => a.fields.featured - b.fields.featured
     // );
@@ -69,13 +73,22 @@ class Projects extends PureComponent {
       return <Project key={project.sys.id} {...project.fields} />;
     });
 
+    const directionBaseClasses =
+      "transform transition duration-500 inline-block ";
+
     return (
       <Fragment>
         <div className="text-center sticky top-0">
-          <button onClick={this.handleClicked} className="text-xl">
+          <button onClick={this.handleClicked} className="text-xl focus:outline-none focus:shadow-outline rounded">
             <Emoji label="Newborn">👶</Emoji>
-            <Emoji label="Direction">
-              {this.state.sortDirection ? "⏩" : "⏪"}
+            <Emoji
+              label="Direction"
+              className={
+                directionBaseClasses +
+                (this.state.sortDirection ? "rotate-0" : "rotate-180")
+              }
+            >
+              ⏩
             </Emoji>
             <Emoji label="Eldest">👴</Emoji>
           </button>
