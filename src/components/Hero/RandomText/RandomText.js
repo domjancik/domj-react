@@ -14,6 +14,20 @@ function RandomText(props) {
 
   const self = useRef(null);
 
+  // Auto unpause on scroll
+  useEffect(() => {
+    const listener = () => {
+      setPaused(false);
+      window.removeEventListener("scroll", listener);
+
+    };
+    window.addEventListener("scroll", listener);
+
+    return () => {
+      window.removeEventListener("scroll", listener);
+    };
+  }, []);
+
   const handleEnter = () => {
     setPaused(true);
   };
