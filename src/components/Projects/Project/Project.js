@@ -5,7 +5,7 @@ import Paragraph from "../../UI/Paragraph/Paragraph";
 import PillParagraph from "../../UI/PillParagraph/PillParagraph";
 import Emoji from "../../UI/Emoji/Emoji";
 import Fade from "react-reveal/Fade";
-import { AuthContext } from "../../../store/AuthStore/AuthStore";
+import withAuth from "../../../hoc/Auth/withAuth";
 
 const PILL_SOURCES = ["responsibilities", "technologies", "collaborators"];
 
@@ -99,9 +99,7 @@ function Project(props) {
       className="p-2 md:p-4 border-dotted border-4 border-teal-200 rounded-md box-border"
       {...props.flippedProps}
     >
-      <AuthContext.Consumer>
-        {({ isAuthenticated }) => (isAuthenticated ? editBar : null)}
-      </AuthContext.Consumer>
+      {props.isAuthenticated ? editBar : null}
 
       <div
         className={
@@ -158,4 +156,4 @@ function Project(props) {
   );
 }
 
-export default Project;
+export default withAuth(Project);

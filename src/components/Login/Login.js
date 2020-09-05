@@ -1,28 +1,20 @@
-import React from 'react'
-import useQuery from '../../hooks/use-query'
-import { Redirect } from 'react-router-dom'
-import { getLink } from '../../util/contentful-oauth'
-import { AuthContext } from '../../store/AuthStore/AuthStore'
+import React from "react";
+import useQuery from "../../hooks/use-query";
+import { useHistory } from "react-router-dom";
+import { getLink } from "../../util/contentful-oauth";
+import withAuth from "../../hoc/Auth/withAuth";
 
-export default function Login() {
-  const query = useQuery()
-  let accessToken = query.get('access_token')
+export default withAuth(function Login({ login }) {
+  const query = useQuery();
+  const history = useHistory();
+  let accessToken = query.get("access_token");
 
   if (!accessToken) {
-    window.location = getLink()
+    window.location = getLink();
+  } else {
+    login(accessToken);
+    history.replace("/");
   }
 
-  return (
-    <div>
-      Logging in...
-      {accessToken ? (
-        <AuthContext.Consumer>
-          {({ login }) => {
-            login(accessToken)
-            return <Redirect to="/" />
-          }}
-        </AuthContext.Consumer>
-      ) : null}
-    </div>
-  )
-}
+  return <div>Logging in...</div>;
+});

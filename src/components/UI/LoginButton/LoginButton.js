@@ -1,25 +1,19 @@
-import React from 'react'
-import { getLink } from '../../../util/contentful-oauth'
-import { AuthContext } from '../../../store/AuthStore/AuthStore'
+import React from "react";
+import { getLink } from "../../../util/contentful-oauth";
+import withAuth from "../../../hoc/Auth/withAuth";
 
-export default function LoginButton() {
-  return (
-    <AuthContext.Consumer>
-      {({ isAuthenticated, logout }) => {
-        return !isAuthenticated ? (
-          <a href={getLink()}>{'<>'}</a>
-        ) : (
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault()
-              logout()
-            }}
-          >
-            {'><'}
-          </a>
-        )
+export default withAuth(function LoginButton({ isAuthenticated, logout }) {
+  return !isAuthenticated ? (
+    <a href={getLink()}>{"<>"}</a>
+  ) : (
+    <a
+      href="#"
+      onClick={(e) => {
+        e.preventDefault();
+        logout();
       }}
-    </AuthContext.Consumer>
-  )
-}
+    >
+      {"><"}
+    </a>
+  );
+});
