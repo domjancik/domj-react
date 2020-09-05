@@ -5,6 +5,7 @@ import Paragraph from "../../UI/Paragraph/Paragraph";
 import PillParagraph from "../../UI/PillParagraph/PillParagraph";
 import Emoji from "../../UI/Emoji/Emoji";
 import Fade from "react-reveal/Fade";
+import { AuthContext } from "../../../store/AuthStore/AuthStore";
 
 const PILL_SOURCES = ["responsibilities", "technologies", "collaborators"];
 
@@ -15,6 +16,7 @@ function truncate(str, n) {
 function Project(props) {
   const [showDetails, setShowDetails] = useState(false);
   const [hoveringImage, setHoveringImage] = useState(false);
+  const [selected, setSelected] = useState(false);
 
   const handleImageEnter = () => {
     setHoveringImage(true);
@@ -82,11 +84,25 @@ function Project(props) {
     link = truncate(link, 30);
   }
 
+  const editBar = (
+    <input
+      type="checkbox"
+      name="selected"
+      checked={selected}
+      onChange={() => setSelected(!selected)}
+      id={props.id}
+    />
+  );
+
   return (
     <div
       className="p-2 md:p-4 border-dotted border-4 border-teal-200 rounded-md box-border"
       {...props.flippedProps}
     >
+      <AuthContext.Consumer>
+        {({ isAuthenticated }) => (isAuthenticated ? editBar : null)}
+      </AuthContext.Consumer>
+
       <div
         className={
           hasLink
