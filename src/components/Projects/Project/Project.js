@@ -16,9 +16,6 @@ function Project(props) {
   const [showDetails, setShowDetails] = useState(false);
   const [hoveringImage, setHoveringImage] = useState(false);
 
-  // console.log("Props:");
-  // console.log(props);
-
   const handleImageEnter = () => {
     setHoveringImage(true);
   };
