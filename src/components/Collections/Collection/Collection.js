@@ -8,7 +8,7 @@ import AllProjectsPrompt from "../../Layout/Navigation/AllProjectsPrompt/AllProj
 export default function Collection({ projects, title }) {
   return (
     <div>
-      <Breadcrumb path={`Collections/${title}`} />
+      <Breadcrumb path={`Projects/${title}`} />
       <Masonry>
         {projects.map((project) => (
           <Project key={project.sys.id} {...project.fields} opened />

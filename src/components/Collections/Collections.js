@@ -20,7 +20,7 @@ export default function Collections() {
 
   return (
     <>
-      <Breadcrumb path="Collections" />
+      <Breadcrumb path="Projects" />
 
       <Masonry columns={2}>
         {collections.map((collection) => (

@@ -14,7 +14,7 @@ export default function AllProjectsPrompt() {
     <div className="p-4 text-center">
       {prompt}{" "}
       <Link
-        to="/projects"
+        to="/projects/all"
         className="bg-black text-white rounded p-2 px-4 transition duration-200 hover:bg-teal-200"
       >
         All Projects

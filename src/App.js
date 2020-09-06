@@ -28,10 +28,10 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/about" component={About} />
-            <Route path="/projects" component={Projects} />
-            <Route path="/collections/:id" component={CollectionDetail} />
-            <Route path="/collections" component={Collections} />
-            <Route path="/" children={<Redirect to="/collections" />} />
+            <Route path="/projects/all" component={Projects} />
+            <Route path="/projects/:id" component={CollectionDetail} />
+            <Route path="/projects" component={Collections} />
+            <Route path="/" children={<Redirect to="/projects/collections" />} />
           </Switch>
         </Layout>
       </AuthStore>

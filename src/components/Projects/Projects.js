@@ -58,7 +58,7 @@ class Projects extends PureComponent {
   };
 
   render() {
-    const breadcrumb = <Breadcrumb path="Projects" />;
+    const breadcrumb = <Breadcrumb path="Projects/All" />;
 
     if (this.state.loading)
       return (
