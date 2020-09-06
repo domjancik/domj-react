@@ -32,7 +32,7 @@ export default class AuthStore extends Component {
     return (
       <AuthContext.Provider
         value={{
-          isAuthenticated: this.state.isAuthenticated,
+          isAuthenticated: false,//this.state.isAuthenticated,
           login: this.setAccessToken,
           logout: this.logout,
         }}
