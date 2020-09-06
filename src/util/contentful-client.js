@@ -7,8 +7,9 @@ const client = contentful.createClient({
 
 export default client;
 
-export const getEntriesOfType = async type => {
-    // TODO Error handling
-    const entries = await client.getEntries({content_type: type})
-    return entries.items.map()
-}
+export const getEntriesOfType = async (type) => {
+  // TODO Error handling
+  const entries = await client.getEntries({ content_type: type });
+  return entries.items;
+  //return entries.items.map( XXX ) // TODO merge id with fields
+};
