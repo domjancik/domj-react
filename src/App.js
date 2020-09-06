@@ -31,7 +31,7 @@ function App() {
             <Route path="/projects/all" component={Projects} />
             <Route path="/projects/:id" component={CollectionDetail} />
             <Route path="/projects" component={Collections} />
-            <Route path="/" children={<Redirect to="/projects/collections" />} />
+            <Route path="/" children={<Redirect to="/projects" />} />
           </Switch>
         </Layout>
       </AuthStore>
