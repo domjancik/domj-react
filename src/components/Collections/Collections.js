@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DataSource from "../../data/DataSource/DataSource";
 import Collection from "./Collection/Collection";
+import Spinner from '../UI/Spinner/Spinner'
 
 export default function Collections() {
   const [collections, setCollections] = useState([]);
@@ -10,6 +11,8 @@ export default function Collections() {
       setCollections(collections)
     );
   }, []);
+
+  if (collections.length === 0) return <Spinner />
 
   return (
     <div>

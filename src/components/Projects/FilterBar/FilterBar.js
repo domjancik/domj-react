@@ -6,7 +6,7 @@ export default function FilterBar({ sortDirection, toggleSortDirection }) {
     "transform transition duration-500 inline-block ";
 
   return (
-    <div className="text-center sticky top-0 z-50 bg-white bg-opacity-25">
+    <div className="text-center">
       <button
         onClick={toggleSortDirection}
         className="text-xl focus:outline-none focus:shadow-outline rounded"

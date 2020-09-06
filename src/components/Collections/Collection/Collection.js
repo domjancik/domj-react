@@ -3,9 +3,10 @@ import Project from "../../Projects/Project/Project";
 import Masonry from "react-masonry-css";
 import { breakpointColumnsObj } from "../../../util/masonry";
 
-export default function Collection({ projects }) {
+export default function Collection({ projects, title }) {
   return (
     <div>
+      <h1 className="text-center text-2xl font-bold">{title}</h1>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

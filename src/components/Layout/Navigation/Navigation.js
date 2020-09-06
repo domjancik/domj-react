@@ -1,12 +1,24 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from "react";
+import NavigationButton from "./NavigationButton/NavigationButton";
 
 export default function Navigation() {
-    return (
-        <div>
-            <NavLink to="/">Projects</NavLink>
-            <NavLink to="/collections">Collections</NavLink>
-            <NavLink to="/about">About</NavLink>
-        </div>
-    )
+  //const navEl = useRef(null); Ref doesn't work in this case, TODO investigate
+  const [el, setEl] = useState(null);
+
+  return (
+    <>
+      <div className="text-center" ref={(el) => setEl(el)}>
+        <NavigationButton to="/" exact scrollComponent={el}>
+          Projects
+        </NavigationButton>
+        <NavigationButton to="/collections" scrollComponent={el}>
+          Collections
+        </NavigationButton>
+        <NavigationButton to="/about" scrollComponent={el}>
+          About
+        </NavigationButton>
+      </div>
+      <hr />
+    </>
+  );
 }

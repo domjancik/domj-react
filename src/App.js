@@ -7,6 +7,8 @@ import Login from "./components/Login/Login";
 import AuthStore from "./store/AuthStore/AuthStore";
 import Collections from "./components/Collections/Collections";
 import About from "./components/About/About";
+import Navigation from "./components/Layout/Navigation/Navigation";
+import Sticky from "./components/Layout/Sticky/Sticky";
 
 function App() {
   return (
@@ -14,6 +16,9 @@ function App() {
       <AuthStore>
         <Layout>
           <Hero />
+          <Sticky>
+            <Navigation />
+          </Sticky>
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/collections" component={Collections} />
