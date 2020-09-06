@@ -25,7 +25,6 @@ export default function Collection({ projects, title, emoji }) {
           <Project key={project.sys.id} {...project.fields} opened />
         ))}
       </Masonry>
-      <AllProjectsPrompt />
     </div>
   );
 }
