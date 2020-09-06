@@ -11,7 +11,7 @@ function CollectionPreview({ projects, title, slug }) {
           <div className="mb-4">
             <Flicker
               component={"h2"}
-              className="text-2xl text-white -m-4 mb-0 rounded bg-black py-4 transition duration-100"
+              className="text-2xl -m-4 mb-0 rounded py-4 transition duration-100"
               flickerClass="text-teal-200"
               style={{
                 borderBottomRightRadius: 0,
