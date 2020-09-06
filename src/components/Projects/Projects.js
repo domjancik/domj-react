@@ -1,16 +1,11 @@
 import React, { PureComponent, Fragment } from "react";
 import Project from "./Project/Project";
-import Emoji from "../UI/Emoji/Emoji";
 import Masonry from "react-masonry-css";
 import { Flipper, Flipped } from "react-flip-toolkit";
 import Spinner from "../UI/Spinner/Spinner";
 import DataSource from "../../data/DataSource/DataSource";
-
-const breakpointColumnsObj = {
-  default: 3,
-  1024: 2,
-  640: 1,
-};
+import FilterBar from "./FilterBar/FilterBar";
+import { breakpointColumnsObj } from "../../util/masonry";
 
 class Projects extends PureComponent {
   constructor(props) {
@@ -78,29 +73,11 @@ class Projects extends PureComponent {
 
     const flipperKey = projects.map((project) => project.sys.id).join("");
 
-    const directionBaseClasses =
-      "transform transition duration-500 inline-block ";
+    
 
     return (
       <Fragment>
-        <div className="text-center sticky top-0 z-50 bg-white bg-opacity-25">
-          <button
-            onClick={this.handleClicked}
-            className="text-xl focus:outline-none focus:shadow-outline rounded"
-          >
-            <Emoji label="Newborn">👶</Emoji>
-            <Emoji
-              label="Direction"
-              className={
-                directionBaseClasses +
-                (this.state.sortDirection ? "rotate-0" : "rotate-180")
-              }
-            >
-              ⏩
-            </Emoji>
-            <Emoji label="Eldest">👴</Emoji>
-          </button>
-        </div>
+        <FilterBar sortDirection={this.state.sortDirection} toggleSortDirection={this.handleClicked} />
         <hr />
         <Flipper flipKey={flipperKey}>
           <Masonry
