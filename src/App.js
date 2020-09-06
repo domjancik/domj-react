@@ -9,6 +9,7 @@ import Collections from "./components/Collections/Collections";
 import About from "./components/About/About";
 import Navigation from "./components/Layout/Navigation/Navigation";
 import Sticky from "./components/Layout/Sticky/Sticky";
+import CollectionDetail from "./components/Collections/CollectionDetail/CollectionDetail";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           </Sticky>
           <Switch>
             <Route path="/login" component={Login} />
+            <Route path="/collections/:id" component={CollectionDetail} />
             <Route path="/collections" component={Collections} />
             <Route path="/about" component={About} />
             <Route path="/" component={Projects} />

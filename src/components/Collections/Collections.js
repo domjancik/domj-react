@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import DataSource from "../../data/DataSource/DataSource";
-import Collection from "./Collection/Collection";
 import Spinner from '../UI/Spinner/Spinner'
+import CollectionPreview from "./CollectionPreview/CollectionPreview";
+import Masonry from "../../hoc/Masonry/Masonry";
 
 export default function Collections() {
   const [collections, setCollections] = useState([]);
 
   useEffect(() => {
+    // TODO fetch only necessary results (title, first project)
     DataSource.fetchCollections().then((collections) =>
       setCollections(collections)
     );
@@ -15,10 +17,10 @@ export default function Collections() {
   if (collections.length === 0) return <Spinner />
 
   return (
-    <div>
+    <Masonry columns={2}>
       {collections.map((collection) => (
-        <Collection key={collection.sys.id} {...collection.fields} />
+        <CollectionPreview key={collection.sys.id} {...collection.fields} />
       ))}
-    </div>
+    </Masonry>
   );
 }

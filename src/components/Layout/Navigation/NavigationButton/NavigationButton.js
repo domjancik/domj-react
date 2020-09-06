@@ -14,7 +14,7 @@ function NavigationButton({ to, children, exact, scrollComponent }) {
   return (
     <NavLink
       exact={exact}
-      className="inline-block text-white bg-black m-2 p-1 px-4 transition duration-500"
+      className="text-sm md:text-base inline-block text-white bg-black m-2 p-1 hover:p-2 px-4 transition duration-500"
       activeClassName="p-2"
       to={to}
       onClick={handleClick}

@@ -4,9 +4,9 @@ import * as ContentTypes from './DataTypes'
 
 export const fetchProjects = () => ContentfulClient.getEntriesOfType(ContentTypes.PROJECT)
 export const fetchProject = ( id ) => {throw 'Not Implemented'}
-export const fetchCollections = () => ContentfulClient.getEntriesOfType(ContentTypes.PROJECT_COLLECTION)
+export const fetchCollections = () => ContentfulClient.getEntriesOfType(ContentTypes.PROJECT_COLLECTION, {'fields.private[ne]': 'true'})
 export const fetchCollection = ( id ) => {throw 'Not Implemented'}
-export const fetchCollectionBySlug = ( slug ) => {throw 'Not Implemented'}
+export const fetchCollectionBySlug = ( slug ) => ContentfulClient.getEntryOfTypeBySlug( ContentTypes.PROJECT_COLLECTION, slug )
 
 const DataSource = {
     fetchProjects,

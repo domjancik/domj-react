@@ -14,7 +14,7 @@ function truncate(str, n) {
 }
 
 function Project(props) {
-  const [showDetails, setShowDetails] = useState(props.opened);
+  const [showDetails, setShowDetails] = useState(props.opened ? props.opened : false);
   const [hoveringImage, setHoveringImage] = useState(false);
   const [selected, setSelected] = useState(false);
 

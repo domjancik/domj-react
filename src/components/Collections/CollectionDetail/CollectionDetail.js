@@ -3,15 +3,21 @@ import Collection from "../Collection/Collection";
 import { useEffect } from "react";
 import { useState } from "react";
 import DataSource from "../../../data/DataSource/DataSource";
+import { useParams } from "react-router-dom";
+import Spinner from "../../UI/Spinner/Spinner";
 
-export default function CollectionDetail({ id }) {
-  const [collection, setCollection] = useState({});
+export default function CollectionDetail() {
+  const [collection, setCollection] = useState(null);
+
+  const { id } = useParams();
 
   useEffect(() => {
-    DataSource.fetchCollection(id).then((collection) =>
-      setCollection(collection)
-    );
+    DataSource.fetchCollectionBySlug(id).then((collection) => {
+      setCollection(collection);
+    });
   }, []);
 
-  return <Collection projects={collection.projects} />;
+  if (!collection) return <Spinner />
+
+  return <Collection {...collection.fields} />;
 }
