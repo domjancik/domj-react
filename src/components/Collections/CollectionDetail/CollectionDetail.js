@@ -5,7 +5,7 @@ import { useState } from "react";
 import DataSource from "../../../data/DataSource/DataSource";
 
 export default function CollectionDetail({ id }) {
-  const [Collection, setCollection] = useState({});
+  const [collection, setCollection] = useState({});
 
   useEffect(() => {
     DataSource.fetchCollection(id).then((collection) =>
