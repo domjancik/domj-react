@@ -1,10 +1,10 @@
 import React, { PureComponent, Fragment } from "react";
 import Project from "./Project/Project";
-import * as contentful from "contentful";
 import Emoji from "../UI/Emoji/Emoji";
 import Masonry from "react-masonry-css";
 import { Flipper, Flipped } from "react-flip-toolkit";
 import Spinner from "../UI/Spinner/Spinner";
+import DataSource from "../../data/DataSource/DataSource";
 
 const breakpointColumnsObj = {
   default: 3,
@@ -23,20 +23,13 @@ class Projects extends PureComponent {
     };
   }
 
-  client = contentful.createClient({
-    space: "kexut3hz4rzv",
-    accessToken: "fT6_oaDOfRx8g5aScDq6SZBLEWGDQAaNWWUn6MvIdxw",
-  });
-
   componentDidMount() {
-    this.fetchProjects().then(this.setProjects);
+    DataSource.fetchProjects().then(this.setProjects);
   }
 
-  fetchProjects = () => this.client.getEntries({ content_type: "project" });
-
-  setProjects = (response) => {
+  setProjects = projects => {
     this.setState({
-      projects: response.items,
+      projects: projects,
       loading: false,
     });
   };
@@ -76,6 +69,7 @@ class Projects extends PureComponent {
       return (
         <Flipped key={project.sys.id} flipId={project.sys.id}>
           {(flippedProps) => {
+            // TODO possibly refactor, .fields tied to Contentful's API
             return <Project {...project.fields} flippedProps={flippedProps} />;
           }}
         </Flipped>

@@ -14,7 +14,7 @@ function truncate(str, n) {
 }
 
 function Project(props) {
-  const [showDetails, setShowDetails] = useState(false);
+  const [showDetails, setShowDetails] = useState(props.opened);
   const [hoveringImage, setHoveringImage] = useState(false);
   const [selected, setSelected] = useState(false);
 
@@ -149,7 +149,7 @@ function Project(props) {
           {showDetails ? "-" : "+"}
         </button>
       </div>
-      <Fade collapse when={showDetails}>
+      <Fade collapse when={showDetails} duration="25">
         <Fragment>{pills}</Fragment>
       </Fade>
     </div>
