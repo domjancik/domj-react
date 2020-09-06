@@ -8,7 +8,7 @@ export default function Navigation() {
   return (
     <>
       <div className="text-center" ref={(el) => setEl(el)}>
-        <NavigationButton to="/" exact scrollComponent={el}>
+        <NavigationButton to="/projects" exact scrollComponent={el}>
           Projects
         </NavigationButton>
         <NavigationButton to="/collections" scrollComponent={el}>
