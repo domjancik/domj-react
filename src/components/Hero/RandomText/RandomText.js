@@ -19,7 +19,6 @@ function RandomText(props) {
     const listener = () => {
       setPaused(false);
       window.removeEventListener("scroll", listener);
-
     };
     window.addEventListener("scroll", listener);
 
@@ -66,6 +65,8 @@ function RandomText(props) {
       transform: `translate(${x}px, ${y}px)`,
       backgroundColor: "black",
       color: "white",
+      borderRight: "black 500px solid",
+      borderLeft: "black 500px solid",
     });
   };
 
@@ -81,6 +82,8 @@ function RandomText(props) {
       // transform: transform([{ scaleX: 2 }]),
       transform: `translate(${x}px, ${y}px)`,
       backgroundColor: "black",
+      borderRight: "black 500px solid",
+      borderLeft: "black 500px solid",
     });
   };
 
