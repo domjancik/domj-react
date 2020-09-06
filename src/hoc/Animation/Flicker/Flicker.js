@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 
+// TODO try to make more generic, not just for class names - give prop alternatives?
+
 export default function Flicker(props) {
   const [flickering, setFlickering] = useState(false);
 
