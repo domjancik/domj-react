@@ -20,8 +20,7 @@ export default function Collections() {
 
   return (
     <>
-      <Breadcrumb path="Projects" />
-
+      {/* <Breadcrumb path="Projects" /> */}
       <Masonry columns={2}>
         {collections.map((collection) => (
           <CollectionPreview key={collection.sys.id} {...collection.fields} />

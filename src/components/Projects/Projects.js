@@ -58,12 +58,12 @@ class Projects extends PureComponent {
   };
 
   render() {
-    const breadcrumb = <Breadcrumb path="Projects/All" />;
+    // const breadcrumb = <Breadcrumb path="Projects/All" />;
 
     if (this.state.loading)
       return (
         <>
-          {breadcrumb}
+          {/* {breadcrumb} */}
           <Spinner />
         </>
       );
@@ -84,7 +84,7 @@ class Projects extends PureComponent {
 
     return (
       <>
-        {breadcrumb}
+        {/* {breadcrumb} */}
         <hr />
         <FilterBar
           sortDirection={this.state.sortDirection}

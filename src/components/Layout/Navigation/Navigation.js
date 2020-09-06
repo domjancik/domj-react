@@ -23,7 +23,17 @@ export default function Navigation() {
       <hr />
       <Route path="/projects">
         <div className="text-center">
-          <SubNavigationButton exact to="/projects" scrollComponent={el}>
+          <SubNavigationButton
+            to="/projects"
+            scrollComponent={el}
+            isActive={(match, location) => {
+              if (!match) return false;
+              console.log(location);
+              if (location.pathname.includes("/all")) return false;
+
+              return true;
+            }}
+          >
             Collections
           </SubNavigationButton>
           <SubNavigationButton to="/projects/all" scrollComponent={el}>
@@ -31,7 +41,7 @@ export default function Navigation() {
           </SubNavigationButton>
         </div>
       </Route>
-      <hr />
+      <hr className="mb-8" />
     </>
   );
 }
