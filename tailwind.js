@@ -713,7 +713,7 @@ module.exports = {
     outline: ['responsive', 'focus'],
     overflow: ['responsive'],
     overscrollBehavior: ['responsive'],
-    padding: ['responsive'],
+    padding: ['responsive', 'hover'],
     placeholderColor: ['responsive', 'focus'],
     placeholderOpacity: ['responsive', 'focus'],
     pointerEvents: ['responsive'],
