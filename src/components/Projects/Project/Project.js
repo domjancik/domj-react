@@ -96,7 +96,7 @@ function Project(props) {
 
   return (
     <div
-      className="p-2 md:p-4 border-dotted border-4 border-teal-200 rounded-md box-border shadow-xs"
+      className="p-2 md:p-4 rounded-md box-border shadow-xs"
       {...props.flippedProps}
     >
       {props.isAuthenticated ? editBar : null}

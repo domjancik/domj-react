@@ -6,7 +6,7 @@ function CollectionPreview({ projects, title, slug }) {
   return (
     <div>
       <Link to={`/collections/${slug}`}>
-        <div className="p-2 md:p-4 border-dotted border-4 border-teal-200 rounded-md box-border text-center transition duration-200 transform hover:-translate-y-1 shadow-xs hover:shadow-md">
+        <div className="p-2 md:p-4 rounded-md box-border text-center transition duration-200 transform hover:-translate-y-1 shadow-xs hover:shadow-md">
           <div className="mb-4">
             <h2 className="text-2xl">{title}</h2>
           </div>
