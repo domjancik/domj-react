@@ -15,8 +15,8 @@ function SubNavigationButton({ to, children, exact, scrollComponent, isActive })
     <NavLink
       exact={exact}
       isActive={isActive}
-      className="text-sm md:text-base inline-block hover:underline mx-2"
-      activeClassName="underline"
+      className="inline-block text-sm md:text-base bg-white transition duration-100 transform hover:-translate-y-1 shadow-xs hover:shadow-lg mx-2 border-1 border-black border rounded p-1"
+      activeClassName="shadow-lg -translate-y-1"
       to={to}
       onClick={handleClick}
     >

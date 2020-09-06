@@ -6,7 +6,6 @@ import PillParagraph from "../../UI/PillParagraph/PillParagraph";
 import Emoji from "../../UI/Emoji/Emoji";
 import Fade from "react-reveal/Fade";
 import withAuth from "../../../hoc/Auth/withAuth";
-import { useEffect } from "react";
 
 const PILL_SOURCES = ["responsibilities", "technologies", "collaborators"];
 
@@ -18,14 +17,6 @@ function Project(props) {
   const [showDetails, setShowDetails] = useState(false);
   const [hoveringImage, setHoveringImage] = useState(false);
   const [selected, setSelected] = useState(false);
-
-  useEffect(() => {
-    if (props.opened) {
-      setTimeout(() => {
-        setShowDetails(true);
-      }, 10);
-    }
-  }, []);
 
   const handleImageEnter = () => {
     setHoveringImage(true);
@@ -161,9 +152,13 @@ function Project(props) {
         </div>
       ) : null}
 
-      <Fade collapse when={showDetails} duration="25">
+      {props.opened ? (
         <Fragment>{pills}</Fragment>
-      </Fade>
+      ) : (
+        <Fade collapse when={showDetails} duration="25">
+          <Fragment>{pills}</Fragment>
+        </Fade>
+      )}
     </div>
   );
 }

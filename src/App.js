@@ -15,6 +15,7 @@ import About from "./components/About/About";
 import Navigation from "./components/Layout/Navigation/Navigation";
 import Sticky from "./components/Layout/Sticky/Sticky";
 import CollectionDetail from "./components/Collections/CollectionDetail/CollectionDetail";
+import KeyedCollectionDetail from "./components/Collections/KeyedCollectionDetail/KeyedCollectionDetail";
 
 function App() {
   return (
@@ -28,9 +29,8 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/about" component={About} />
-            <Route path="/projects/all" component={Projects} />
-            <Route path="/projects/:id" component={CollectionDetail} />
-            <Route path="/projects" component={Collections} />
+            <Route path="/projects/:id" component={KeyedCollectionDetail} />
+            <Route path="/projects" component={Projects} />
             <Route path="/" children={<Redirect to="/projects" />} />
           </Switch>
         </Layout>

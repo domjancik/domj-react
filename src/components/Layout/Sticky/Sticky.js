@@ -2,7 +2,7 @@ import React from "react";
 
 function Sticky({ children }) {
   return (
-    <div className="sticky top-0 z-50 bg-white bg-opacity-25">{children}</div>
+    <div className="md:sticky top-0 z-50 bg-white shadow-lg">{children}</div>
   );
 }
 

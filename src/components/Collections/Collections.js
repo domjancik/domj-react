@@ -5,16 +5,10 @@ import CollectionPreview from "./CollectionPreview/CollectionPreview";
 import Masonry from "../../hoc/Masonry/Masonry";
 import Breadcrumb from "../UI/Breadcrumb/Breadcrumb";
 import AllProjectsPrompt from "../Layout/Navigation/AllProjectsPrompt/AllProjectsPrompt";
+import useCollections from "../../hooks/use-collections";
 
 export default function Collections() {
-  const [collections, setCollections] = useState([]);
-
-  useEffect(() => {
-    // TODO fetch only necessary results (title, first project)
-    DataSource.fetchCollections().then((collections) =>
-      setCollections(collections)
-    );
-  }, []);
+  const collections = useCollections();
 
   if (collections.length === 0) return <Spinner />;
 
