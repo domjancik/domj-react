@@ -6,23 +6,36 @@ import { useState } from "react";
 export default function Flicker(props) {
   const [flickering, setFlickering] = useState(false);
 
-  const Component = props.component;
-  const flickerClass = props.flickerClass;
+  const Component = props.component ? props.component : 'div';
+  
+  let flickerOnClass = ''
+  let flickerOffClass = ''
+
+  if (props.flickerClass instanceof Array) {
+    flickerOffClass = props.flickerClass[0]
+    flickerOnClass = props.flickerClass[1]
+  }
+
+  // const flickerClass = props.flickerClass;
   //   delete props["component"];
   //   delete props["flickerClass"];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (Math.random() < 0.8) return;
-      setFlickering((flickering) => !flickering);
+      //let flicker
+      const on = Math.random() < 0.95
+      //if () return;
+      setFlickering(on);
     }, 100);
     return () => {
       clearInterval(interval);
     };
   }, []);
 
+  const flickerClass = flickering ? flickerOnClass : flickerOffClass;
+
   let classes = props.className;
-  if (flickering) {
+  if (flickerClass) {
     classes += " " + flickerClass;
   }
 
