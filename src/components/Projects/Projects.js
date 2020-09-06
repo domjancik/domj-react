@@ -6,6 +6,7 @@ import Spinner from "../UI/Spinner/Spinner";
 import DataSource from "../../data/DataSource/DataSource";
 import FilterBar from "./FilterBar/FilterBar";
 import { breakpointColumnsObj } from "../../util/masonry";
+import Breadcrumb from "../UI/Breadcrumb/Breadcrumb";
 
 class Projects extends PureComponent {
   constructor(props) {
@@ -22,7 +23,7 @@ class Projects extends PureComponent {
     DataSource.fetchProjects().then(this.setProjects);
   }
 
-  setProjects = projects => {
+  setProjects = (projects) => {
     this.setState({
       projects: projects,
       loading: false,
@@ -57,7 +58,15 @@ class Projects extends PureComponent {
   };
 
   render() {
-    if (this.state.loading) return <Spinner />;
+    const breadcrumb = <Breadcrumb path="Projects" />;
+
+    if (this.state.loading)
+      return (
+        <>
+          {breadcrumb}
+          <Spinner />
+        </>
+      );
 
     const projects = this.sortProjects(this.state.projects);
     const projectElements = projects.map((project) => {
@@ -73,11 +82,14 @@ class Projects extends PureComponent {
 
     const flipperKey = projects.map((project) => project.sys.id).join("");
 
-    
-
     return (
-      <Fragment>
-        <FilterBar sortDirection={this.state.sortDirection} toggleSortDirection={this.handleClicked} />
+      <>
+        {breadcrumb}
+        <hr />
+        <FilterBar
+          sortDirection={this.state.sortDirection}
+          toggleSortDirection={this.handleClicked}
+        />
         <hr />
         <Flipper flipKey={flipperKey}>
           <Masonry
@@ -88,7 +100,7 @@ class Projects extends PureComponent {
             {projectElements}
           </Masonry>
         </Flipper>
-      </Fragment>
+      </>
     );
   }
 }
