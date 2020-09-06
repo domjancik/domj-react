@@ -4,7 +4,7 @@ import { get } from "lodash";
 function ProjectThumbnail(props) {
   let imgSrc =
     get(props, "heroImage.fields.file.url", "NOTFOUND") +
-    "?fm=jpg&fl=progressive&w=100&h=100&fit=thumb";
+    "?fm=jpg&fl=progressive&w=250&h=250&fit=thumb";
 
   return (
     <img
