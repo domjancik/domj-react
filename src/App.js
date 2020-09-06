@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./components/Login/Login";
 import AuthStore from "./store/AuthStore/AuthStore";
 import Collections from "./components/Collections/Collections";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/collections" component={Collections} />
+            <Route path="/about" component={About} />
             <Route path="/" component={Projects} />
           </Switch>
         </Layout>
