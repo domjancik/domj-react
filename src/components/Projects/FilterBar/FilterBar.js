@@ -7,7 +7,6 @@ export default function FilterBar({ sortDirection, toggleSortDirection }) {
 
   return (
     <div className="text-center">
-      Sort direction:{' '} 
       <button
         onClick={toggleSortDirection}
         className="text-xl focus:outline-none focus:shadow-outline rounded"
