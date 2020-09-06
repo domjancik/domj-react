@@ -6,6 +6,7 @@ import PillParagraph from "../../UI/PillParagraph/PillParagraph";
 import Emoji from "../../UI/Emoji/Emoji";
 import Fade from "react-reveal/Fade";
 import withAuth from "../../../hoc/Auth/withAuth";
+import { useEffect } from "react";
 
 const PILL_SOURCES = ["responsibilities", "technologies", "collaborators"];
 
@@ -14,9 +15,17 @@ function truncate(str, n) {
 }
 
 function Project(props) {
-  const [showDetails, setShowDetails] = useState(props.opened ? props.opened : false);
+  const [showDetails, setShowDetails] = useState(false);
   const [hoveringImage, setHoveringImage] = useState(false);
   const [selected, setSelected] = useState(false);
+
+  useEffect(() => {
+    if (props.opened) {
+      setTimeout(() => {
+        setShowDetails(true);
+      }, 10);
+    }
+  }, []);
 
   const handleImageEnter = () => {
     setHoveringImage(true);
@@ -96,7 +105,7 @@ function Project(props) {
 
   return (
     <div
-      className="p-2 md:p-4 rounded-md box-border shadow-xs"
+      className="p-2 md:p-4 rounded-md box-border shadow-xs border-1 border"
       {...props.flippedProps}
     >
       {props.isAuthenticated ? editBar : null}
@@ -140,15 +149,18 @@ function Project(props) {
       </div>
       <Paragraph>{props.description}</Paragraph>
 
-      <div className="text-center">
-        <button
-          className="transition duration-200 text-2xl rounded hover:bg-teal-200 hover:text-white border-none focus:outline-none focus:shadow-outline"
-          style={{ width: "100%" }}
-          onClick={handleDetailsToggled}
-        >
-          {showDetails ? "-" : "+"}
-        </button>
-      </div>
+      {!props.opened ? (
+        <div className="text-center">
+          <button
+            className="transition duration-200 text-2xl rounded hover:bg-teal-200 hover:text-white border-none focus:outline-none focus:shadow-outline"
+            style={{ width: "100%" }}
+            onClick={handleDetailsToggled}
+          >
+            {showDetails ? "-" : "+"}
+          </button>
+        </div>
+      ) : null}
+
       <Fade collapse when={showDetails} duration="25">
         <Fragment>{pills}</Fragment>
       </Fade>
