@@ -7,19 +7,19 @@ export default function FilterBar({ sortDirection, toggleSortDirection }) {
 
   return (
     <div className="text-center">
+      Sort direction:{' '} 
       <button
         onClick={toggleSortDirection}
         className="text-xl focus:outline-none focus:shadow-outline rounded"
       >
         <Emoji label="Newborn">👶</Emoji>
-        <Emoji
-          label="Direction"
+        <span
           className={
             directionBaseClasses + (sortDirection ? "rotate-0" : "rotate-180")
           }
         >
-          ⏩
-        </Emoji>
+          {'->'}
+        </span>
         <Emoji label="Eldest">👴</Emoji>
       </button>
     </div>
