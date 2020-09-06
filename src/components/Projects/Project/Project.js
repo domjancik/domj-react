@@ -96,7 +96,7 @@ function Project(props) {
 
   return (
     <div
-      className="p-2 md:p-4 border-dotted border-4 border-teal-200 rounded-md box-border"
+      className="p-2 md:p-4 border-dotted border-4 border-teal-200 rounded-md box-border shadow-xs"
       {...props.flippedProps}
     >
       {props.isAuthenticated ? editBar : null}
@@ -104,7 +104,7 @@ function Project(props) {
       <div
         className={
           hasLink
-            ? "transition duration-200 transform hover:scale-105 hover:-translate-y-4 hover:shadow-xl"
+            ? "transition duration-200 transform hover:-translate-y-1 shadow-xs hover:shadow-md"
             : null
         }
       >
