@@ -1,7 +1,6 @@
 import React from "react";
 import Project from "../../Projects/Project/Project";
 import Masonry from "../../../hoc/Masonry/Masonry";
-import AllProjectsPrompt from "../../Layout/Navigation/AllProjectsPrompt/AllProjectsPrompt";
 import Flicker from "../../../hoc/Animation/Flicker/Flicker";
 import Emoji from "../../UI/Emoji/Emoji";
 

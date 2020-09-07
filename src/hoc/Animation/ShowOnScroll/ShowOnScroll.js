@@ -7,13 +7,12 @@ export default function ShowOnScroll({ threshold, children }) {
 
   useEffect(() => {
     const listener = window.addEventListener("scroll", (e) => {
-    //   console.log(window.pageYOffset)
       setVisible(window.pageYOffset > threshold)
     });
     return () => {
       window.removeEventListener(listener);
     };
-  }, []);
+  }, [threshold]);
 
   const classes = visible ? "opacity-100" : "opacity-0";
 

@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from "react";
+import React, { PureComponent } from "react";
 import Project from "./Project/Project";
 import Masonry from "react-masonry-css";
 import { Flipper, Flipped } from "react-flip-toolkit";
@@ -6,7 +6,6 @@ import Spinner from "../UI/Spinner/Spinner";
 import DataSource from "../../data/DataSource/DataSource";
 import FilterBar from "./FilterBar/FilterBar";
 import { breakpointColumnsObj } from "../../util/masonry";
-import Breadcrumb from "../UI/Breadcrumb/Breadcrumb";
 
 class Projects extends PureComponent {
   constructor(props) {

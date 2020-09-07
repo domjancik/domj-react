@@ -61,29 +61,9 @@ function RandomText(props) {
     const y = event.clientY - boundRect.top - boundRect.height / 2;
 
     setStyle({
-      // transform: transform([{ scaleX: 2 }]),
       transform: `translate(${x}px, ${y}px)`,
       backgroundColor: "black",
       color: "white",
-      borderRight: "black 500px solid",
-      borderLeft: "black 500px solid",
-    });
-  };
-
-  const handleMoveBars = (event) => {
-    console.log(self);
-    const boundRect = self.current.getBoundingClientRect();
-    console.log(boundRect);
-
-    const x = event.clientX - boundRect.left;
-    const y = event.clientY - boundRect.top;
-
-    setStyle({
-      // transform: transform([{ scaleX: 2 }]),
-      transform: `translate(${x}px, ${y}px)`,
-      backgroundColor: "black",
-      borderRight: "black 500px solid",
-      borderLeft: "black 500px solid",
     });
   };
 
@@ -102,7 +82,7 @@ function RandomText(props) {
     return () => {
       clearInterval(nameRefreshInterval);
     };
-  }, [paused, index]);
+  }, [paused, index, props.interval, props.texts.length]);
 
   // Follow mouse
   useEffect(() => {}, [paused]);

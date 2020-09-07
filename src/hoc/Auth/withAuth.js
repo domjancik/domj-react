@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { AuthContext } from '../../store/AuthStore/AuthStore'
 
 export default (WrappedComponent) => {
@@ -10,8 +9,6 @@ export default (WrappedComponent) => {
       }}
     </AuthContext.Consumer>
   )
-
-  hocComponent.propTypes = {}
 
   return hocComponent
 }

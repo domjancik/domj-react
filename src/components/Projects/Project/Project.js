@@ -53,7 +53,9 @@ function Project(props) {
 
   const tags = getPills("tags").join(", ");
   const featured = props.featured ? (
-    <Emoji label="Favorite Star">⭐ </Emoji>
+    <>
+      <Emoji label="Favorite Star" emoji="⭐" />{" "}
+    </>
   ) : null;
 
   let imgDescription = get(props, "heroImage.fields.description", "An image");
@@ -155,7 +157,7 @@ function Project(props) {
       {props.opened ? (
         <Fragment>{pills}</Fragment>
       ) : (
-        <Fade collapse when={showDetails} duration="25">
+        <Fade collapse when={showDetails} duration={25}>
           <Fragment>{pills}</Fragment>
         </Fade>
       )}

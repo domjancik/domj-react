@@ -12,10 +12,11 @@ export default function CollectionDetail() {
   const { id } = useParams();
 
   useEffect(() => {
+    setCollection(null)
     DataSource.fetchCollectionBySlug(id).then((collection) => {
       setCollection(collection);
     });
-  }, []);
+  }, [id]);
 
   if (!collection) return <Spinner />
 

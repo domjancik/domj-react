@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import NavigationButton from "./NavigationButton/NavigationButton";
-import SubNavigationButton from "./SubNavigationButton/SubNavigationButton";
 import { Route } from "react-router-dom";
 import useCollections from "../../../hooks/use-collections";
 import UpArrow from "./UpArrow/UpArrow";
@@ -15,15 +14,6 @@ export default function Navigation() {
   return (
     <>
       <div className="text-center" ref={(el) => setEl(el)}>
-        {/* <NavigationButton to="/projects" exact scrollComponent={el}>
-          Projects
-        </NavigationButton> */}
-        {/* <NavigationButton to="/projects" scrollComponent={el}>
-          Projects
-        </NavigationButton>
-        <NavigationButton to="/about" scrollComponent={el}>
-          About
-        </NavigationButton> */}
       </div>
       <ShowOnScroll threshold={700}>
         <div className="fixed right-0 bottom-0 pr-4 pb-4 z-50 md:hidden">
@@ -40,6 +30,7 @@ export default function Navigation() {
             <NavigationButton
               scrollComponent={el}
               to={`/projects/${collection.fields.slug}`}
+              key={collection.fields.slug}
             >
               {collection.fields.title}
             </NavigationButton>
