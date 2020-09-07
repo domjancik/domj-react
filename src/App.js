@@ -21,7 +21,7 @@ function App() {
         <Layout>
           <Hero />
           <Navigation />
-          <div className="min-h-screen">
+          <div className="min-h-screen lg:w-5/6 m-auto">
             <Switch>
               <Route path="/login" component={Login} />
               <Route path="/about" component={About} />
