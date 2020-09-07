@@ -38,7 +38,6 @@ function RandomText(props) {
     const y = 0;
 
     setStyle({
-      // transform: transform([{ scaleX: 2 }]),
       transform: `translate(${x}px, ${y}px)`,
       backgroundColor: "inherit",
       color: "inherit",
@@ -53,9 +52,7 @@ function RandomText(props) {
   };
 
   const handleMove = (event) => {
-    // console.log(self);
     const boundRect = self.current.getBoundingClientRect();
-    // console.log(boundRect);
 
     const x = event.clientX - boundRect.left - boundRect.width / 2;
     const y = event.clientY - boundRect.top - boundRect.height / 2;
