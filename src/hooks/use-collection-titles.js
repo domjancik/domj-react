@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import DataSource from "../data/DataSource/DataSource";
 
-export default function useCollections() {
+export default function useCollectionTitles() {
   const [collections, setCollections] = useState([]);
 
   useEffect(() => {
-    DataSource.fetchCollections().then((collections) =>
+    DataSource.fetchCollectionTitles().then((collections) =>
       setCollections(collections)
     );
   }, []);
