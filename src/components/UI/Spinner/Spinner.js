@@ -5,7 +5,6 @@ export default function Spinner() {
   return (
     <>
       <div className={classes.Spinner}>Loading...</div>
-      <div className="h-screen" />
     </>
   );
 }
