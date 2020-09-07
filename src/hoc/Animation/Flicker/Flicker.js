@@ -17,16 +17,9 @@ export default function Flicker(props) {
     flickerOnClass = flickerClass[1];
   }
 
-  // const flickerClass = props.flickerClass;
-  //   delete props["component"];
-  //   delete props["flickerClass"];
-
-
   useEffect(() => {
     const interval = setInterval(() => {
-      //let flicker
       const on = Math.random() < 0.95;
-      //if () return;
       setFlickering(on);
     }, 100);
     return () => {
