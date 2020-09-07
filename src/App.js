@@ -12,7 +12,6 @@ import Login from "./components/Login/Login";
 import AuthStore from "./store/AuthStore/AuthStore";
 import About from "./components/About/About";
 import Navigation from "./components/Layout/Navigation/Navigation";
-import Sticky from "./components/Layout/Sticky/Sticky";
 import CollectionDetail from "./components/Collections/CollectionDetail/CollectionDetail";
 
 function App() {
@@ -21,9 +20,7 @@ function App() {
       <AuthStore>
         <Layout>
           <Hero />
-          <Sticky>
-            <Navigation />
-          </Sticky>
+          <Navigation />
           <div className="min-h-screen">
             <Switch>
               <Route path="/login" component={Login} />

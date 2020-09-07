@@ -7,7 +7,7 @@ function NavigationButton({ to, children, exact, scrollComponent }) {
     // The timeout fixes the scroll happening before view rerender
     // It's an arbitrary number, maybe there's a way to do it in some promise/callback way
     setTimeout(() => {
-      scrollToComponent(scrollComponent, { align: "top" });
+      scrollToComponent(scrollComponent, { align: "top", duration: 250 });
     }, 100);
   };
   
