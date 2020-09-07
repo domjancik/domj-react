@@ -16,7 +16,7 @@ export default function Collection({ projects, title, emoji }) {
       </Flicker>
       {emoji ? (
         <div className="text-center text-4xl mb-6">
-          <Emoji label={title}>{emoji}</Emoji>
+          <Emoji label={title} emoji={emoji} />
         </div>
       ) : null}
       <Masonry>
