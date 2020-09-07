@@ -16,9 +16,6 @@ class Layout extends PureComponent {
         <SocialBar />
         {this.props.children}
         <Footer />
-        {/* <div className="fixed right-0 bottom-0">
-          <LoginButton />
-        </div> */}
       </div>
     );
   }
