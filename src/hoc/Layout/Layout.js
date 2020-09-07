@@ -12,7 +12,7 @@ class Layout extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div className="md:mb-5">
         <SocialBar />
         {this.props.children}
         <Footer />
