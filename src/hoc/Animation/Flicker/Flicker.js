@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function Flicker(props) {
   const [flickering, setFlickering] = useState(false);
-  const { flickerClass, component, ...newProps } = props;
+  const { probability, flickerClass, component, ...newProps } = props;
 
   const Component = component ? component : "div";
 
@@ -15,11 +15,13 @@ export default function Flicker(props) {
   if (flickerClass instanceof Array) {
     flickerOffClass = flickerClass[0];
     flickerOnClass = flickerClass[1];
+  } else {
+    flickerOnClass = flickerClass;
   }
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const on = Math.random() < 0.95;
+      const on = Math.random() < (probability || 0.05);
       setFlickering(on);
     }, 100);
     return () => {
