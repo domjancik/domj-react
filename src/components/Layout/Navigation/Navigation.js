@@ -32,7 +32,6 @@ export default function Navigation() {
         className="text-center"
         ref={(el) => {
           setEl(el);
-          console.log(el);
         }}
       ></div>
       <ShowOnScroll threshold={700}>
