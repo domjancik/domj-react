@@ -145,8 +145,8 @@ function Project(props) {
       {!props.opened ? (
         <div className="text-center">
           <button
-            className="transition duration-200 text-2xl rounded hover:bg-teal-200 hover:text-white border-none focus:outline-none focus:shadow-outline"
-            style={{ width: "100%" }}
+            className="transition duration-200 text-2xl rounded hover:bg-teal-200 hover:text-white border-black border-1 border focus:outline-none focus:shadow-outline mb-1 mt-4"
+            style={{ width: "100%", boxShadow: "0 3px black" }}
             onClick={handleDetailsToggled}
           >
             {showDetails ? "-" : "+"}
@@ -157,7 +157,7 @@ function Project(props) {
       {props.opened ? (
         <Fragment>{pills}</Fragment>
       ) : (
-        <Fade collapse when={showDetails} duration={25}>
+        <Fade collapse when={showDetails} duration={200}>
           <Fragment>{pills}</Fragment>
         </Fade>
       )}
