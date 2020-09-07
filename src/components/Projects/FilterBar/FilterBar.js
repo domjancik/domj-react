@@ -6,10 +6,10 @@ export default function FilterBar({ sortDirection, toggleSortDirection }) {
     "transform transition duration-500 inline-block ";
 
   return (
-    <div className="text-center">
+    <div className="text-center text-4xl mb-6">
       <button
         onClick={toggleSortDirection}
-        className="text-xl focus:outline-none focus:shadow-outline rounded"
+        className="focus:outline-none focus:shadow-outline rounded"
       >
         <Emoji label="Newborn" emoji="👶" />
         <span

@@ -7,13 +7,6 @@ import Emoji from "../../UI/Emoji/Emoji";
 export default function Collection({ projects, title, emoji }) {
   return (
     <div>
-      <Flicker
-        component={"h1"}
-        className="text-center text-2xl mb-6 transition duration-100"
-        flickerClass="text-teal-200"
-      >
-        {title}
-      </Flicker>
       {emoji ? (
         <div className="text-center text-4xl mb-6">
           <Emoji label={title} emoji={emoji} />

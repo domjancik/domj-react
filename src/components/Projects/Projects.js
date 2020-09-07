@@ -83,13 +83,10 @@ class Projects extends PureComponent {
 
     return (
       <>
-        {/* {breadcrumb} */}
-        <hr />
         <FilterBar
           sortDirection={this.state.sortDirection}
           toggleSortDirection={this.handleClicked}
         />
-        <hr />
         <Flipper flipKey={flipperKey}>
           <Masonry
             breakpointCols={breakpointColumnsObj}
